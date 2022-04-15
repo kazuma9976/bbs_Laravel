@@ -14,7 +14,11 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        //
+        // Messageモデルを使って、MySQLのmessageテーブルから全データを取得
+        $messages = Message::all();
+        
+        // 連想配列のデータを3セット(viewで引き出すキーワードと値のセット)を引き連れてviewを呼び出す。
+        return view('messages.index', ['messages' => $messages, 'flash_message'  => null, 'errors' => null]);
     }
 
     /**
