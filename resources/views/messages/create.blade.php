@@ -43,12 +43,12 @@
                     <!-- 1行 -->
                     <div class="form-group row">
                         <div class="offset-2 col-10">
-                            <button type="submit" class="btn btn-primary">投稿</button>
+                            <button type="submit" class="col-sm-3 btn btn-primary">投稿</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="row mt-5">
-                <a href="/" class="btn btn-primary">投稿一覧</a>
+                <a href="/" class="col-sm-2 btn btn-danger">投稿一覧へ戻る</a>
             </div>
 @endsection

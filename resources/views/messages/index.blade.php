@@ -27,8 +27,8 @@
                 <p>データ一件もありません。</p>
                 @endif
             </div>
-            <div class="row mt-5">
-                <a href="/messages/create" class="btn btn-primary">新規投稿</a>
+            <div class="row mt-5 mb-5">
+                <a href="/messages/create" class="col-sm-2 btn btn-primary">新規投稿</a>
             </div> 
         </div>
 @endsection

@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="row mt-3">
+            <div class="row mt-5 mb-4">
                 <h1 class=" col-sm-12 text-center">@yield('header')</h1>
             </div>
             
