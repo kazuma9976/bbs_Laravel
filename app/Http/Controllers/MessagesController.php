@@ -26,7 +26,7 @@ class MessagesController extends Controller
         $errors = null;
         
         // 連想配列のデータを3セット(viewで引き出すキーワードと値のセット)を引き連れてviewを呼び出す。
-        return view('messages.index', ['messages' => $messages, 'flash_message'  => null, 'errors' => null]);
+        return view('messages.index', compact('messages', 'flash_message', 'errors'));
     }
 
     /**
@@ -99,14 +99,14 @@ class MessagesController extends Controller
             // 画像アップロード処理
             $file->move($target_path, $image);
             // メッセージインスタンスをデータベースに保存
-            $message = save();
+            $message->save();
             // セッションにflash_messageを保存
             session(['flash_message' => '新規投稿が成功しました']);
             // indexアクションへリダイレクト
             return redirect('/');
         } else {
             // セッションに、入力したメッセージインスタンスとエラーを保存
-            session(['errors' => $errors, 'message']);
+            session(['errors' => $errors, 'message' => $message]);
             
             // 再度訂正して入職してもらうため、createアクションへリダイレクト
             return redirect('/messages/create');
