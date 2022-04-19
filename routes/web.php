@@ -22,6 +22,7 @@
 // ルーターをMessagesControllerに指定
 Route::get('/', 'MessagesController@index');
 Route::resource('messages', 'MessagesController');
+Route::resource('comments', 'CommentsController', ['only' => ['store']]);
 // HTTPS接続でアセット(CSSや画像など)を読み込むため
 if (env('APP_ENV') === 'local') {
     URL::forceScheme('https');

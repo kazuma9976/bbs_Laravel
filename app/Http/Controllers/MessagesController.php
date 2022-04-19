@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\Comments; 
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
