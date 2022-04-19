@@ -3,32 +3,30 @@
 @section('header', 'ID: ' . $message->id .'の投稿編集')
 @section('content')
             <div class="row mt-2">
-                <form class="col-sm-12" action="/messages/{{ $message->id }}" method="POST" enctype="multipart/form-data">
-                    <!-- CSRF 対策 トークン作成 -->
-                    {{ csrf_field() }}
-                    <!-- 更新のためPUTを使う -->
-                    <input type="hidden" name="_method" value="PUT">
+                
+                {!! Form::model($message, ['route' => ['messages.update', $message->id], 'method' => 'put', 'enctype' => 'multipart/form-data', 'class' => 'col-sm-12']) !!}
+
                     <!-- 1行 -->
                     <div class="form-group row">
-                        <label class="col-2 col-form-label">名前</label>
+                        {!! Form::label('name', '名前', ['class' => 'col-2 col-form-label']) !!}
                         <div class="col-10">
-                            <input type="text" class="form-control" name="name" value="{{ $message->name }}">
+                            {!! Form::text('name', $message->name, ['class' => 'form-control']) !!}
                         </div>
                     </div>
                 
                     <!-- 1行 -->
                     <div class="form-group row">
-                        <label class="col-2 col-form-label">タイトル</label>
+                        {!! Form::label('title', 'タイトル', ['class' => 'col-2 col-form-label']) !!}
                         <div class="col-10">
-                            <input type="text" class="form-control" name="title" value="{{ $message->title }}">
+                            {!! Form::text('title', $message->title, ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     
                     <!-- 1行 -->
                     <div class="form-group row">
-                        <label class="col-2 col-form-label">内容</label>
+                         {!! Form::label('body', '内容', ['class' => 'col-2 col-form-label']) !!}
                         <div class="col-10">
-                            <input type="text" class="form-control" name="body" value="{{ $message->body }}">
+                            {!! Form::text('body', $message->body, ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     
@@ -41,9 +39,9 @@
                     </div>
                     
                     <div class="form-group row">
-                        <label class="col-2 col-form-label">画像アップロード</label>
+                        {!! Form::label('image', '画像アップロード', ['class' => 'col-2 col-form-label']) !!}
                         <div class="col-3">
-                            <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
+                            {!! Form::file('image', ['accept' => 'image/*', 'onchange' => "previewImage(this)"]) !!}
                         </div>
                         <div class="col-7">
                             <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
@@ -53,12 +51,14 @@
                     <!-- 1行 -->
                     <div class="form-group row">
                         <div class="offset-2 col-10">
-                            <button type="submit" class="col-sm-3 btn btn-primary">更新</button>
+                            {!! Form::submit('更新', ['class' => 'col-sm-3 btn btn-primary']) !!}
                         </div>
                     </div>
-                </form>
+                
+                {!! Form::close() !!}
+                
             </div>
             <div class="row mt-5">
-                <a href="/" class="col-sm-2 btn btn-danger">投稿一覧へ戻る</a>
+                {!! link_to_route('messages.index', '投稿一覧へ戻る', [], ['class' => 'col-sm-2 btn btn-danger']) !!}
             </div>
 @endsection

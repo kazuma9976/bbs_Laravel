@@ -28,15 +28,14 @@
             </div> 
             
             <div class="row mt-5">
-                <a href="/messages/{{ $message->id }}/edit" class="col-sm-6 btn btn-success">編集</a>
-                <form class="col-sm-6" action="/messages/{{ $message->id }}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger col-sm-12" onclick="return confirm('投稿を削除します。よろしいですか？')">削除</button>
-                </form>
+                {!! link_to_route('messages.edit', '編集', ['ID'=> $message->id], ['class' => 'col-sm-6 btn btn-success']) !!}
+                
+                {!! Form::model($message, ['route' => ['messages.destroy', $message->id], 'method' => 'delete', 'class' => 'col-sm-6']) !!}
+                    {!! Form::submit('削除', ['class' => 'btn btn-danger col-sm-12', 'onclick' => 'return confirm("投稿を削除します。よろしいですか?")']) !!}
+                {!! Form::close() !!}
             </div>       
         
              <div class="row mt-5">
-                <a href="/" class="btn btn-primary">投稿一覧へ戻る</a>
+                {!! link_to_route('messages.index', '投稿一覧', [], ['class' => 'btn btn-primary']) !!}
             </div>
 @endsection

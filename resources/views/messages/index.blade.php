@@ -15,7 +15,7 @@
                     </tr>
                     @foreach($messages as $message)
                     <tr>
-                        <td><a href="/messages/{{ $message->id }}">{{ $message->id }}</a></td>
+                        <td>{!! link_to_route('messages.show', $message->id, ['ID' => $message->id], []) !!}</td>
                         <td>{{ $message->name }}</td>
                         <td>{{ $message->title }}</td>
                         <td>{{ $message->body }}</td>
@@ -36,7 +36,7 @@
                 @endif
             </div>
             <div class="row mt-5 mb-5">
-                <a href="/messages/create" class="col-sm-2 btn btn-primary">新規投稿</a>
+                {!! link_to_route('messages.create', '新規投稿',[], ['class' => 'btn btn-primary']) !!}
             </div> 
         </div>
 @endsection
