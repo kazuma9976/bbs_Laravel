@@ -108,7 +108,7 @@ class MessagesController extends Controller
             // セッションに、入力したメッセージインスタンスとエラーを保存
             session(['errors' => $errors, 'message' => $message]);
             
-            // 再度訂正して入職してもらうため、createアクションへリダイレクト
+            // 再度訂正して入力してもらうため、createアクションへリダイレクト
             return redirect('/messages/create');
         }
     }
@@ -121,8 +121,11 @@ class MessagesController extends Controller
      */
     public function show(Message $message)
     {
-        // フラッシュメッセージをnullにセット
-        $flash_message = null;
+        // フラッシュメッセージをセッションから取得
+        $flash_message = session('flash_message');
+        // セッション情報の破棄
+        session()->forget('flash_message');
+        
         // エラーメッセージをnullにセット
         $errors = null;
         
@@ -138,8 +141,16 @@ class MessagesController extends Controller
      */
     public function edit(Message $message)
     {
-        //
-        dd('edit');
+        // フラッシュメッセージをnullにリセット
+        $flash_message = null;
+        
+        // エラーメッセージをセッションから取得
+        $errors = session('errors');
+        // セッション情報の破棄
+        session()->forget('errors');
+        
+        // 連想データを3セット(viewで引き出すキーワードとの値のセット)引き連れてviewを呼び出す。
+        return view('messages.edit', compact('message', 'flash_message', 'errors'));
     }
 
     /**
@@ -151,8 +162,55 @@ class MessagesController extends Controller
      */
     public function update(Request $request, Message $message)
     {
-        //
-        dd('destroy');
+        // resources/views/messages/edit.blade.php(投稿編集)で、入力された値を取得
+        $name = $request->input('name');
+        $title = $request->input('title');
+        $body = $request->input('body');
+        // 画像ファイル情報の取得だけ特殊
+        $file = $request->image;
+        
+        // 画像ファイルが選択されていれば
+        if($file) {
+            // 現在時刻(UNIXタイムスタンプ)と、元々のファイル名を組み合わせてランダムなファイル名を作成
+            $image = time() . $file->getClientOriginalName();
+            // アップロードするフォルダ名を取得
+            $target_path = public_path('uploads/');
+        } else { // ファイルが選択されていなければ、元の値(登録されている画像)を保持
+            $image = $message->image;
+        }
+        
+        // 入力された値をセット
+        $message->name = $name;
+        $message->title = $title;
+        $message->body = $body;
+        $message->image = $image;
+        
+        // 入力された値のエラーチェック
+        $errors = $message->validate();
+        
+        // 入力エラーが一つもなければ
+        if(count($errors) === 0) {
+            // 画像が選択されていれば
+            if($file) {
+                // 画像をアップロード
+                $file->move($target_path, $image);
+            }
+            
+            // データベースを更新
+            $message->save();
+            
+            // セッションにflash_messageを保存
+            session(['flash_message' => 'ID: ' . $message->id . 'の更新が成功しました。']);
+            
+            // showアクションへリダイレクト
+            return redirect('/messages/' . $message->id);
+        } else {
+            // セッションにエラーを保存
+            session(['errors' => $errors]);
+            // editアクションへリダイレクト
+            return redirect('/messages/' . $message->id . '/edit');
+        }
+        
     }
 
     /**
