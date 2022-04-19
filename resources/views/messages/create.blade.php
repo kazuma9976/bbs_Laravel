@@ -4,13 +4,14 @@
 @section('content')
             <div class="row mt-2">
                 <form class="col-sm-12" action="/messages" method="POST" enctype="multipart/form-data">
-                    <!-- CSRF 対策(トークン作成) -->
+                    <!-- CSRF 対策 トークン作成 -->
                     {{ csrf_field() }}
                     <!-- 1行 -->
                     <div class="form-group row">
                         <label class="col-2 col-form-label">名前</label>
                         <div class="col-10">
-                            <input type="text" class="form-control" name="name" value="{{ $message->name }}">
+                            <!-- oldメソッドで直前に入力した内容を表示できるようにし、そうでなければ$messageが持つnameを表示-->
+                            <input type="text" class="form-control" name="name" value="{{ old('name') ? old('name') : $message->name }}">
                         </div>
                     </div>
                 
@@ -18,7 +19,8 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">タイトル</label>
                         <div class="col-10">
-                            <input type="text" class="form-control" name="title" value="{{ $message->title }}">
+                            <!-- oldメソッドで直前に入力した内容を表示できるようにし、そうでなければ$messageが持つtitleを表示-->
+                            <input type="text" class="form-control" name="title" value="{{ old('title') ? old('title') : $message->title }}">
                         </div>
                     </div>
                     
@@ -26,7 +28,8 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">内容</label>
                         <div class="col-10">
-                            <input type="text" class="form-control" name="body" value="{{ $message->body }}">
+                            <!-- oldメソッドで直前に入力した内容を表示できるようにし、そうでなければ$messageが持つbodyを表示-->
+                            <input type="text" class="form-control" name="body" value="{{ old('body') ? old('body') : $message->body }}">
                         </div>
                     </div>
                     
