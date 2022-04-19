@@ -23,6 +23,14 @@
                     </tr>
                     @endforeach
                 </table>
+                
+                <!--ページネーションのために追記-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        {{ $messages->links() }}
+                    </div>
+                </div>
+                
                 @else
                 <p>データ一件もありません。</p>
                 @endif

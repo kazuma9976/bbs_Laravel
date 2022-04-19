@@ -29,3 +29,10 @@ img {
     display: block;
     margin: 0 auto;
 }
+
+.col-sm-12 ul li {
+    margin-bottom: 0px;
+    color: black;
+    background-color: white;
+    padding: 0px;
+}

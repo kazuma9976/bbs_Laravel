@@ -14,8 +14,8 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        // Messageモデルを使って、MySQLのmessageテーブルから全データを取得
-        $messages = Message::all();
+        // Messageモデルを使って、MySQLのmessageテーブルから15件データを取得
+        $messages = Message::paginate(15);
         
         // 連想配列のデータを1セット(viewで引き出すキーワードと値のセット)を引き連れてviewを呼び出す。
         return view('messages.index', compact('messages'));
