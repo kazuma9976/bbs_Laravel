@@ -5,7 +5,6 @@
             <div class="row mt-2">
                 
                 {!! Form::model($message, ['route' => ['messages.update', $message->id], 'method' => 'put', 'enctype' => 'multipart/form-data', 'class' => 'col-sm-12']) !!}
-
                     <!-- 1行 -->
                     <div class="form-group row">
                         {!! Form::label('name', '名前', ['class' => 'col-2 col-form-label']) !!}
@@ -49,15 +48,15 @@
                     </div>
                     
                     <!-- 1行 -->
-                    <div class="form-group row">
-                        <div class="offset-2 col-10">
+                    <div class="form-group row mt-3">
+                        <div class="offset-1 col-10">
                             {!! Form::submit('更新', ['class' => 'col-sm-3 btn btn-primary']) !!}
                         </div>
                     </div>
-                
                 {!! Form::close() !!}
                 
             </div>
+            
             <div class="row mt-5">
                 {!! link_to_route('messages.index', '投稿一覧へ戻る', [], ['class' => 'col-sm-2 btn btn-danger']) !!}
             </div>

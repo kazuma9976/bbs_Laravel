@@ -4,13 +4,17 @@ body {
 }
 
 h1 {
-    color: blue;
+    color: #008BBB;
 }
 
 h2 {
     color: red;
     background-color: pink;
     padding: 5px;
+}
+
+h3 {
+    color: 	#9400D3;
 }
 
 ul {

@@ -25,8 +25,8 @@
                 </table>
                 
                 <!--ページネーションのために追記-->
-                <div class="row">
-                    <div class="col-sm-12">
+                <div class="row offset-sm-4 mt-3">
+                    <div class="offset-2 col-sm-12">
                         {{ $messages->links() }}
                     </div>
                 </div>
@@ -35,8 +35,8 @@
                 <p>データ一件もありません。</p>
                 @endif
             </div>
-            <div class="row mt-5 mb-5">
-                {!! link_to_route('messages.create', '新規投稿',[], ['class' => 'btn btn-primary']) !!}
+            <div class="row mt-4 mb-5">
+                {!! link_to_route('messages.create', '新規投稿',[], ['class' => 'offset-sm-3 col-sm-6 btn btn-primary']) !!}
             </div> 
         </div>
 @endsection

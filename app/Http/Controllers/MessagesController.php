@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
-use App\Comments; 
+use App\Comments;  // 追加
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
@@ -94,8 +94,10 @@ class MessagesController extends Controller
      */
     public function show(Message $message)
     {
-        // 連想配列配列のデータを1セット(viewで引き出すキーワードと値のセット)引き連れてviewを呼び出す
-        return view('messages.show', compact('message'));
+        // このメッセージに紐づいたコメント一覧を取得
+        $comments = $message->comments()->get();
+        // 連想配列配列のデータを2セット(viewで引き出すキーワードと値のセット)引き連れてviewを呼び出す
+        return view('messages.show', compact('message', 'comments'));
     }
 
     /**
