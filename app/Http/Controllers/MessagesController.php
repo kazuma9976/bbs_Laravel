@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\Comments;  // 追加
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MessagesController extends Controller
 {
@@ -63,12 +64,17 @@ class MessagesController extends Controller
         // 画像ファイル情報の取得だけ特殊
         $file = $request->image;
         
-        // 現在時刻ともともとのファイル名を組み合わせてランダムなファイル名を作成
-        $image = time() . $file->getClientOriginalName();
-        // アップロードするフォルダー名を取得
-        $target_path = public_path('uploads/');
-         // 画像アップロード処理 
-        $file->move($target_path, $image);
+        // // 現在時刻ともともとのファイル名を組み合わせてランダムなファイル名を作成
+        // $image = time() . $file->getClientOriginalName();
+        // // アップロードするフォルダー名を取得
+        // $target_path = public_path('uploads/');
+        //  // 画像アップロード処理 
+        // $file->move($target_path, $image);
+        
+        // S3用
+        $path = Storage::disk('s3')->putFile('/uploads', $file, 'public');
+        // パスから、最後の「ファイル名.拡張子」の部分だけ取得
+        $image = basename($path);
         
         // 空のメッセージインスタンスを作成
         $message = new Message();
@@ -137,12 +143,17 @@ class MessagesController extends Controller
         
         // 画像ファイルが選択されていれば
         if($file) {
-            // 現在時刻(UNIXタイムスタンプ)と、元々のファイル名を組み合わせてランダムなファイル名を作成
-            $image = time() . $file->getClientOriginalName();
-            // アップロードするフォルダ名を取得
-            $target_path = public_path('uploads/');
-            // 画像アップロード処理
-            $file->move($target_path, $image);
+            // // 現在時刻(UNIXタイムスタンプ)と、元々のファイル名を組み合わせてランダムなファイル名を作成
+            // $image = time() . $file->getClientOriginalName();
+            // // アップロードするフォルダ名を取得
+            // $target_path = public_path('uploads/');
+            // // 画像アップロード処理
+            // $file->move($target_path, $image);
+            
+            // S3用
+            $path = Storage::disk('s3')->putFile('/uploads', $file, 'public');
+            // パスから、最後の「ファイル名.拡張子」の部分だけ取得
+            $image = basename($path);
             
         } else { // ファイルが選択されていなければ、元の値(登録されている画像)を保持
             $image = $message->image;

@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <th class="text-center">画像</th>
-                        <td><img src="{{ asset('uploads/' . $message->image) }}" alt="表示する画像がありません。"></td>
+                        <td><img src="{{ Storage::disk('s3')->url('uploads/' . $message->image) }}" alt="表示する画像がありません。"></td>
                     </tr>
                 </table>
             </div> 

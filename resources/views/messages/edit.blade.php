@@ -33,7 +33,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">現在の画像</label>
                         <div class="col-10">
-                           <img src="{{ asset('uploads/' . $message->image) }}" alt="表示する画像がありません。">
+                           <img src="{{ Storage::disk('s3')->url('uploads/' . $message->image) }}" alt="表示する画像がありません。">
                         </div>
                     </div>
                     
