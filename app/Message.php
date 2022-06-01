@@ -30,6 +30,7 @@ class Message extends Model
         
         // エラー配列を返す
         return $errors;
+        
     }
     
     // この投稿に紐づくコメント一覧を取得するメソッド
