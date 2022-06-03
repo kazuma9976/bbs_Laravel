@@ -4,7 +4,7 @@
 @section('content')
             <div class="row mt-2">
                 @if(count($messages) !== 0) 
-                <table class="col-sm-12 table table-bordered table-striped">
+                <table class="col-sm-12 text-center table table-bordered table-striped">
                     <tr>
                         <th>ID</th>
                         <th>ユーザ名</th>
@@ -32,7 +32,7 @@
                 </div>
                 
                 @else
-                <p>データ一件もありません。</p>
+                <p class="col-sm-12 text-center text-danger">※投稿は一件もありません。</p>
                 @endif
             </div>
             <div class="row mt-4 mb-5">
