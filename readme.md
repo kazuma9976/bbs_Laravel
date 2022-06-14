@@ -1,72 +1,59 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# bbs_laravel(簡易投稿掲示板アプリ)
+## 1. このアプリの概要
+これは、侍エンジニア塾のカリキュラムの中で、PHPで学んだMVCモデルと、Laravelの基本的な仕組み(CRUD処理)を理解するために開発した簡易投稿掲示板アプリです。
+画像を新規投稿し、画像の一覧や詳細を表示させ、編集と削除ができるシンプルなアプリとなっております。Herokuにデプロイしておりますので、ぜひ操作してみてください。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 2. 技術要素
 
-## About Laravel
+- 開発環境 AWS Cloud9 / Amazon Linux AMI
+- HTML5 / CSS3
+- Bootstrap 4.3.1
+- JavaScript / jQuery 3.3.1
+- PHP 7.2.34
+- MySQL 5.5.62
+- Laravel Framework 5.8.38
+- 画像の保存 AWS / S3
+- バージョン管理 Git / GitHub
+- デプロイ Heroku
+- Herokuにデプロイしたもの: https://bbs-laravel-again.herokuapp.com/
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 2. 機能一覧
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 新規画像投稿機能
+- 投稿一覧表示機能
+- 投稿詳細表示機能
+- 画像投稿の編集・削除機能
+- 画像投稿にコメントする機能
+- 各種フラッシュメッセージ表示機能
+- 各種入力値に関するバリデーション機能
+- 不正アクセス防止機能
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 3. このアプリの画像資料(※一部を紹介)
 
-## Learning Laravel
+##### ⓵最初の画面
+![最初の画面](/public/images/sample_1.jpg)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+##### ⓶新規投稿画面
+![ログイン後のトップ画面(投稿一覧) ](/public/images/sample_2.jpg)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+##### ⓷投稿の詳細画面
+![職員プロフィール](/public/images/sample_3.jpg)
 
-## Laravel Sponsors
+##### ⓸このアプリのデータベース図
+![このアプリのデータベース図](/public/images/bbs_laravel_database.jpg)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 4. お問い合わせ
+駆け出しエンジニアの立場であり、まだまだ不勉強なためバグが潜んでいるかもしれません。
+ログイン機能を付けたり、ユーザーのプロフィールを追加したりするなど、追加できる機能は大いにあると感じております。
+その他に改善点などがありましたら、以下のメールアドレスにご連絡いただけると幸いです。
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+##### ◆メールアドレス:
+samurai.portfolio@gmail.com
 
-## Contributing
+また、自作のポートフォリオサイトもありますので、よろしければこちらもご覧ください。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+##### ◆Kazuma Iwaiのポートフォリオサイト:
+http://ksamurai.php.xdomain.jp/Portfolio/index.php
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 著者
+2022/06/14 Kazuma Iwai
