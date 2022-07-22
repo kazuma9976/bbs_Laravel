@@ -15,7 +15,7 @@
 - 画像の保存 AWS / S3
 - バージョン管理 Git / GitHub
 - デプロイ Heroku
-- Herokuにデプロイしたもの: https://happy-bbs-laravel.herokuapp.com/
+- Herokuにデプロイしたもの: https://new-bbs-laravel.herokuapp.com/
 
 ## 3. 機能一覧
 
