@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', '簡易掲示板')
-@section('header', 'みんなの投稿')
+@section('header', '投稿一覧')
 @section('content')
             <div class="row mt-2">
                 @if(count($messages) !== 0) 
